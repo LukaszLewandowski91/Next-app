@@ -1,3 +1,10 @@
+import { ProductCounter } from "@/ui/atoms/ProductCounter";
+
 export default function pageProduct1() {
-  return <div>Test</div>;
+  return (
+    <div>
+      <ProductCounter />
+      Test
+    </div>
+  );
 }
