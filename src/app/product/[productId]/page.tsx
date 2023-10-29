@@ -1,16 +1,26 @@
-export default function SingleProductPage({
+import { Suspense } from "react";
+import { getProductById } from "@/api/products";
+import { ProductCoverImage } from "@/ui/atoms/ProductCoverImage";
+import { ProductListItemDescription } from "@/ui/atoms/ProductListItemDescription";
+import { SuggestedProductsList } from "@/ui/organisms/SuggestedProducts";
+
+export default async function SingleProductPage({
   params,
-  searchParams,
 }: {
   params: { productId: string };
-  searchParams: { [key: string]: string | string[] };
 }) {
-  const refferal = searchParams.test.toString();
+  const product = await getProductById(params.productId);
   return (
-    <div>
-      <h1>Single Product Page</h1>
-      {params.productId}
-      <p>Ref: {refferal}</p>
-    </div>
+    <>
+      <article className="max-w-xs">
+        <ProductCoverImage {...product.coverImage} />
+        <ProductListItemDescription product={product} />
+      </article>
+      <aside>
+        <Suspense>
+          <SuggestedProductsList />
+        </Suspense>
+      </aside>
+    </>
   );
 }
