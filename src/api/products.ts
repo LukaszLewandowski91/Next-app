@@ -14,11 +14,31 @@ type ProductResponseItem = {
   longDescription: string;
 };
 export const getProductsList = async () => {
-  const res = await fetch("https://naszsklep-api.vercel.app/api/products");
+  const res = await fetch(
+    "https://naszsklep-api.vercel.app/api/products?take=8"
+  );
   const productResponse = (await res.json()) as ProductResponseItem[];
 
   const products = productResponse.map(productResponseItemToProductItemType);
   return products;
+};
+
+export const getProductsOffsetList = async (offset: number) => {
+  const res = await fetch(
+    `https://naszsklep-api.vercel.app/api/products?take=8&offset=${offset}`
+  );
+  const productResponse = (await res.json()) as ProductResponseItem[];
+
+  const products = productResponse.map(productResponseItemToProductItemType);
+  return products;
+};
+
+export const getProductsCount = async () => {
+  const res = await fetch("https://naszsklep-api.vercel.app/api/products");
+  const productResponse = (await res.json()) as ProductResponseItem[];
+
+  const products = productResponse.map(productResponseItemToProductItemType);
+  return products.length;
 };
 
 export const getProductById = async (id: ProductItemType["id"]) => {

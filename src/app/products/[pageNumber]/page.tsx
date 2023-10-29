@@ -1,10 +1,15 @@
-import { getProductsCount, getProductsList } from "@/api/products";
+import { getProductsCount, getProductsOffsetList } from "@/api/products";
 import { Pagination } from "@/ui/organisms/Pagination";
 import { ProductList } from "@/ui/organisms/ProductList";
 
-export default async function ProductsPage() {
-  const products = await getProductsList();
+export default async function CategoryProductPage({
+  params,
+}: {
+  params: { pageNumber: string };
+}) {
+  const products = await getProductsOffsetList(parseInt(params.pageNumber) - 1);
   const totalProducts = await getProductsCount();
+
   const numberOfPages = Math.ceil(totalProducts / 8);
 
   return (
