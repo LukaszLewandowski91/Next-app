@@ -7,7 +7,9 @@ export default async function CategoryProductPage({
 }: {
   params: { pageNumber: string };
 }) {
-  const products = await getProductsOffsetList(parseInt(params.pageNumber) - 1);
+  const products = await getProductsOffsetList(
+    (parseInt(params.pageNumber) - 1) * 8
+  );
   const totalProducts = await getProductsCount();
 
   const numberOfPages = Math.ceil(totalProducts / 8);
