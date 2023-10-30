@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { type Metadata } from "next";
 import { getProductById, getProductsList } from "@/api/products";
-import { ProductCoverImage } from "@/ui/atoms/ProductCoverImage";
-import { ProductListItemDescription } from "@/ui/atoms/ProductListItemDescription";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProducts";
+import { ProductImage } from "@/ui/atoms/ProductImage";
+import { ProductDescription } from "@/ui/atoms/Productdescription";
 
 export const generateMetadata = async ({
   params,
@@ -39,11 +39,9 @@ export default async function SingleProductPage({
   const product = await getProductById(params.productId);
   return (
     <>
-      <h1>{product.name}</h1>
-      <p>{product.description}</p>
-      <article className="max-w-xs">
-        <ProductCoverImage {...product.coverImage} />
-        <ProductListItemDescription product={product} />
+      <article className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <ProductImage {...product.coverImage} />
+        <ProductDescription product={product} />
       </article>
       <aside>
         <Suspense>
