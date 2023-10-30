@@ -18,9 +18,12 @@ export default function RootLayout({
     <html lang="pl">
       <body className={inter.className}>
         <Nav />
-        <section className="mx-auto max-w-md p-12 sm:max-w-2xl sm: py-16 md:max-w-4xl lg:max-w-7xl">
-          {children}
-        </section>
+        <div className="flex flex-grow flex-col">
+          <section className="sm:py-18 mx-auto flex w-full max-w-2xl flex-grow flex-col px-8 py-12 sm:px-6 lg:max-w-7xl">
+            {children}
+          </section>
+        </div>
+
         <footer className="text-center text-gray-500 text-sm">
           &copy; 2023 Fashion Shop
         </footer>
