@@ -22,7 +22,7 @@ export const ActiveLink = <T extends string>({
   return (
     <Link
       href={href}
-      className={clsx(className, isActive && activeClassName)}
+      className={clsx(isActive ? activeClassName : className)}
       aria-current={isActive ? "page" : undefined}
     >
       {children}
