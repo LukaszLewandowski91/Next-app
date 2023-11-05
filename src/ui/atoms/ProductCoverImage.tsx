@@ -1,3 +1,4 @@
+import NextImage from "next/image";
 export const ProductCoverImage = ({
   src,
   alt,
@@ -7,7 +8,7 @@ export const ProductCoverImage = ({
 }) => {
   return (
     <div className="aspect-square overflow-hidden rounded-md border bg-slate-50 hover:bg-slate-100">
-      <img
+      <NextImage
         width={320}
         height={320}
         alt={alt}
