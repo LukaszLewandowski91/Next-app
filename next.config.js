@@ -5,6 +5,27 @@ const nextConfig = {
     typedRoutes: true,
     mdxRs: true,
   },
+  redirects: async () => {
+    return [
+      // products/hoodies
+      //products/accessories
+      {
+        source: "/products/t-shirts",
+        destination: "/products/t-shirts/1",
+        permanent: false,
+      },
+      {
+        source: "/products/hoodies",
+        destination: "/products/hoodies/1",
+        permanent: false,
+      },
+      {
+        source: "/products/accessories",
+        destination: "/products/accessories/1",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 const withMDX = require("@next/mdx")();

@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { type Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getProductById, getProductsList } from "@/api/products";
 import { SuggestedProductsList } from "@/ui/organisms/SuggestedProducts";
 import { ProductImage } from "@/ui/atoms/ProductImage";
@@ -11,6 +12,9 @@ export const generateMetadata = async ({
   params: { productId: string };
 }): Promise<Metadata> => {
   const product = await getProductById(params.productId);
+  if (!product) {
+    notFound();
+  }
   return {
     title: `${product.name} - Nasz Sklep`,
     description: product.description,
@@ -37,6 +41,11 @@ export default async function SingleProductPage({
   params: { productId: string };
 }) {
   const product = await getProductById(params.productId);
+
+  if (!product) {
+    notFound();
+  }
+
   return (
     <>
       <article className="grid grid-cols-1 gap-4 sm:grid-cols-2">

@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import { ActiveLink } from "@/ui/atoms/ActiveLink";
+
+const NavLinks = [
+  { href: "/", label: "Home" },
+  { href: "/products", label: "All" },
+  { href: "/products/t-shirts", label: "T-shirts" },
+  { href: "/products/hoodies", label: "Hoodies" },
+  { href: "/products/accessories", label: "Accessories" },
+];
 export const Nav = () => {
   const defaultClasses =
     "flex h-full w-full min-w-[3rem] items-center justify-center border-b-2 px-1 pt-1 text-center text-sm font-medium text-slate-500";
@@ -15,24 +23,17 @@ export const Nav = () => {
           <nav className="scrolling-touch scroll-shadows -mx-2 flex overflow-x-scroll lg:mx-0 lg:h-16 lg:overflow-x-auto">
             <div className="hidden flex-shrink-0 items-center lg:flex"></div>
             <ul className="flex h-16 max-w-full space-x-8 whitespace-nowrap lg:px-8">
-              <li className="first:pl-4 last:pr-4 lg:px-0">
-                <ActiveLink
-                  href="/"
-                  className={classNames}
-                  activeClassName={activeClasses}
-                >
-                  Home
-                </ActiveLink>
-              </li>
-              <li className="first:pl-4 last:pr-4 lg:px-0">
-                <ActiveLink
-                  href="/products"
-                  className={classNames}
-                  activeClassName={activeClasses}
-                >
-                  All
-                </ActiveLink>
-              </li>
+              {NavLinks.map((link) => (
+                <li key={link.href} className="first:pl-4 last:pr-4 lg:px-0">
+                  <ActiveLink
+                    href={link.href}
+                    className={classNames}
+                    activeClassName={activeClasses}
+                  >
+                    {link.label}
+                  </ActiveLink>
+                </li>
+              ))}
             </ul>
           </nav>
           <div className="flex h-full flex-1 items-center px-2 lg:ml-6 lg:h-16 lg:justify-end">
