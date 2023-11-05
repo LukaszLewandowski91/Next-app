@@ -21,7 +21,7 @@ export const generateMetadata = async ({
     openGraph: {
       title: `${product.name} - Nasz Sklep`,
       description: product.description,
-      images: [product.coverImage.src],
+      images: product.images[0]?.url,
     },
   };
 };
@@ -49,7 +49,9 @@ export default async function SingleProductPage({
   return (
     <>
       <article className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <ProductImage {...product.coverImage} />
+        {product.images[0] && (
+          <ProductImage src={product.images[0].url} alt="" />
+        )}
         <ProductDescription product={product} />
       </article>
       <aside>
