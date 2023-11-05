@@ -1,5 +1,7 @@
-import Link from "next/link";
+"use client";
+import Link, { type LinkProps } from "next/link";
 import { ShoppingCart } from "lucide-react";
+import { type RouteType } from "next/dist/lib/load-custom-routes";
 import { ActiveLink } from "@/ui/atoms/ActiveLink";
 
 const NavLinks = [
@@ -9,7 +11,12 @@ const NavLinks = [
   { href: "/categories/hoodies", label: "Hoodies" },
   { href: "/categories/accessories", label: "Accessories" },
 ];
-export const Nav = () => {
+
+interface NavLinkProps extends LinkProps<RouteType> {
+  exact?: boolean;
+}
+
+export const Nav = ({ exact }: NavLinkProps) => {
   const defaultClasses =
     "flex h-full w-full min-w-[3rem] items-center justify-center border-b-2 px-1 pt-1 text-center text-sm font-medium text-slate-500";
   const activeClasses = defaultClasses + " border-blue-500";
@@ -29,6 +36,7 @@ export const Nav = () => {
                     href={{ pathname: link.href }}
                     className={classNames}
                     activeClassName={activeClasses}
+                    exact={exact}
                   >
                     {link.label}
                   </ActiveLink>

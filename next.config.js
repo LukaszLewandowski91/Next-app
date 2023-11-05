@@ -6,12 +6,15 @@ const nextConfig = {
     mdxRs: true,
   },
   images: {
-    domains: ["media.graphassets.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "media.graphassets.com",
+      },
+    ],
   },
   redirects: async () => {
     return [
-      // products/hoodies
-      //products/accessories
       {
         source: "/categories/t-shirts",
         destination: "/categories/t-shirts/1",

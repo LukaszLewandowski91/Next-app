@@ -1,9 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// import { ActiveLink } from "@/ui/atoms/ActiveLink";
 import { Nav } from "@/ui/organisms/NavBar";
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin", "latin-ext"] });
 
 export const metadata: Metadata = {
   title: "Fashion Shop",
@@ -17,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body className={inter.className}>
-        <Nav />
+        <Nav href={{ pathname: "" }} />
         <div className="flex flex-grow flex-col">
           <section className="sm:py-18 mx-auto flex w-full max-w-2xl flex-grow flex-col px-8 py-12 sm:px-6 lg:max-w-7xl">
             {children}
