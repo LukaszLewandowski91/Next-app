@@ -26,7 +26,7 @@ export const Nav = () => {
               {NavLinks.map((link) => (
                 <li key={link.href} className="first:pl-4 last:pr-4 lg:px-0">
                   <ActiveLink
-                    href={link.href}
+                    href={{ pathname: link.href }}
                     className={classNames}
                     activeClassName={activeClasses}
                   >

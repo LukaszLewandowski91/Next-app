@@ -12,7 +12,11 @@ export const Pagination = ({ numberOfPages }: { numberOfPages: number }) => {
           return (
             <li key={index}>
               <ActiveLink
-                href={index === 0 ? "/products" : `/products/${index + 1}`}
+                href={
+                  index === 0
+                    ? { pathname: "/products" }
+                    : { pathname: `/products/${index + 1}` }
+                }
                 className={defaultClasses}
                 activeClassName={activeClasses}
               >
