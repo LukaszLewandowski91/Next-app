@@ -9,4 +9,7 @@ fragment ProductListItem on Product {
   images(first: 1) {
     url
   }
+  collections(first: 1) {
+    ...CollectionList
+  }
 }

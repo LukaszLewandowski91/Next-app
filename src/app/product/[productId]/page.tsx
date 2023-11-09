@@ -56,7 +56,7 @@ export default async function SingleProductPage({
       </article>
       <aside>
         <Suspense>
-          <SuggestedProductsList />
+          {product.collections && <SuggestedProductsList product={product} />}
         </Suspense>
       </aside>
     </>

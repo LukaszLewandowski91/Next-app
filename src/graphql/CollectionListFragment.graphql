@@ -1,0 +1,5 @@
+fragment CollectionList on Collection {
+  name
+  slug
+  description
+}
